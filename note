@@ -1,9 +1,0 @@
-- from terminal connect to psql
-sudo -u postgres psql
-
-- At psql cli:
-list dbs: \l
-connect to db: \c <db_name>
-list tables: \dt
-call system command: \! <command>(eg. \! clear)
-

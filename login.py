@@ -1,6 +1,8 @@
 import psycopg2
 from passlib.hash import bcrypt
 from utils import list_students
+from utils_redis import create_session, verify_session, delete_session
+
 
 # === DATABASE CONFIGURATION ===
 DB_CONFIG = {
@@ -68,10 +70,22 @@ def login():
         return
 
     hashed_pw, name = row
-    if bcrypt.verify(password, hashed_pw):
-        print(f"WELCOME BACK, {name}")
-    else:
+    if not bcrypt.verify(password, hashed_pw):
         print("PASSWORD INCORRECT")
+        return
+
+    token = create_session(student_id, "student")
+    print(f"WELCOME BACK, {name}", f"TOKEN: {token}", sep="\n")
+
+def check_session(student_id: str, token: str):
+    if verify_session(student_id, token):
+        print("SESSION VALID")
+    else:
+        print("SESSION INVALID OR EXPIRED")
+
+def logout(student_id: str):
+    delete_session(student_id)
+    print("LOGGED OUT SUCCESSFULLY")
 
 # === MAIN LOOP ===
 def main():
@@ -80,6 +94,7 @@ def main():
         print("1. REGISTER")
         print("2. LOGIN")
         print("3. EXIT")
+        print("4. LIST STUDENTS (FOR DEBUGGING PURPOSES)")
         choice = input("PLEASE SELECT AN OPTION: ").strip()
 
         if choice == "1":
@@ -90,7 +105,11 @@ def main():
             print("SYSTEM EXIT")
             break
         elif choice == "4":
-            print(list_students())
+            students = list_students()
+            print("\n=== STUDENT LIST ===")
+            print("STUDENT_ID \t| NAME \t| EMAIL")
+            for student in students:
+                print(f"{student[0]} \t| {student[1]} \t| {student[2]}")
 
         else:
             print("PLEASE SELECT A VALID OPTION")
