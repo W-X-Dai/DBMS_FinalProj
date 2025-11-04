@@ -1,0 +1,63 @@
+# system
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+pip-wheel-metadata/
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+.python-version
+.pytest_cache/
+.coverage
+htmlcov/
+
+# db
+*.db
+*.sqlite3
+*.sqlite
+*.sql.gz
+*.dump
+
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# logs and tmp
+logs/
+*.log
+*.tmp
+*.bak
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+secrets.yml
+
+# else
+*.class
+*.o
+*.so
