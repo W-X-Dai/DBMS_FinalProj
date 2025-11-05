@@ -7,3 +7,6 @@ The total system is relying on "user_id" as the primary key, so I use UUID to ge
 
 [2025-11-05 12:06]
 I finish the final DDL of the database schema, which clearly defines all the tables and their relationships. It's a huge step for the project.
+
+[2025-11-05 12:13]
+I create the tables with schema.sql file in the PostgreSQL database, besides, leave a instruction in note.md on how to create the database from schema.sql file.

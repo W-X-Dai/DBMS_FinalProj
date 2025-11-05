@@ -27,3 +27,15 @@ application(user_id FK→user, resource_id FK→resource, apply_date, status)
 
 push_record(push_id PK, pusher_id FK→user, student_id FK→user, resource_id FK→resource, push_datetime)
 
+- How to create the database from schema.sql
+
+0. let your location be the folder where schema.sql is located
+
+1. connect to db
+```
+sudo -u postgres psql
+```
+2. execute sql file
+```
+\i schema.sql
+```

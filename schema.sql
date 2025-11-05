@@ -1,5 +1,5 @@
-CREATE DATABASE resource_system;
-\c resource_system;
+CREATE DATABASE group_7;
+\c group_7;
 
 -- UUID 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -39,7 +39,7 @@ CREATE TABLE student_profile (
 CREATE TABLE company_profile (
     company_id UUID PRIMARY KEY,
     company_name VARCHAR(100) NOT NULL,
-    contact_person UUID NOT NULL REFERENCES "user"(user_id) -- who manages this company
+    contact_person UUID NOT NULL REFERENCES "user"(user_id), -- who manages this company
     industry VARCHAR(50) NOT NULL
 );
 
